@@ -13,8 +13,10 @@ import com.example.githubuser.databinding.FragmentFollowBinding
 
 class FollowFragment : Fragment() {
     private var _binding: FragmentFollowBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
     private val detailViewModel by viewModels<DetailViewModel>()
+    private var index: Int? = null
+    private var username: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,17 +24,19 @@ class FollowFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentFollowBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val index = arguments?.getInt(ARG_SECTION_NUMBER, 0)
-        val username = arguments?.getString(ARG_USERNAME).toString()
+        arguments.let {
+            index = arguments?.getInt(ARG_SECTION_NUMBER, 0)
+            username = arguments?.getString(ARG_USERNAME).toString()
+        }
 
         val layoutManager = LinearLayoutManager(requireActivity())
-        binding.rvFollow.layoutManager = layoutManager
+        binding?.rvFollow?.layoutManager = layoutManager
 
         detailViewModel.isLoading.observe(requireActivity()) {
             showLoading(it)
@@ -56,17 +60,17 @@ class FollowFragment : Fragment() {
     }
 
     private fun setFollowUser(listFollow: List<ItemsItem>) {
-        val adapter = UserAdapter() {
+        val adapter = UserAdapter {
             val intent = Intent(requireActivity(), DetailUserActivity::class.java)
             intent.putExtra(DetailUserActivity.EXTRA_LOGIN, it.login)
             startActivity(intent)
         }
         adapter.submitList(listFollow)
-        binding.rvFollow.adapter = adapter
+        binding?.rvFollow?.adapter = adapter
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.progressBar3.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding?.progressBar3?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     companion object {

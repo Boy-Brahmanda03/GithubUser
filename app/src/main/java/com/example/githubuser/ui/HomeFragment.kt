@@ -16,25 +16,25 @@ import com.example.githubuser.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
     private val homeViewModel by viewModels<HomeViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            svUser.setupWithSearchBar(sbUser)
-            svUser
-                .editText
-                .setOnEditorActionListener { textView, _, _ ->
+            this?.svUser?.setupWithSearchBar(sbUser)
+            this?.svUser
+                ?.editText
+                ?.setOnEditorActionListener { textView, _, _ ->
                     sbUser.text = svUser.text
                     svUser.hide()
                     if (textView.text.toString().isEmpty()) {
@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
 
         //setting layout manager for recylerview
         val layoutManager = LinearLayoutManager(requireActivity())
-        binding.rvUser.layoutManager = layoutManager
+        binding?.rvUser?.layoutManager = layoutManager
 
         homeViewModel.listUser.observe(viewLifecycleOwner) { users ->
             setUsersData(users)
@@ -67,17 +67,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun setUsersData(users: List<ItemsItem>) {
-        val adapter = UserAdapter(){
+        val adapter = UserAdapter {
             val intent = Intent(requireActivity(), DetailUserActivity::class.java)
             intent.putExtra(DetailUserActivity.EXTRA_LOGIN, it.login)
             startActivity(intent)
         }
         adapter.submitList(users)
-        binding.rvUser.adapter = adapter
+        binding?.rvUser?.adapter = adapter
     }
 
     override fun onDestroy() {

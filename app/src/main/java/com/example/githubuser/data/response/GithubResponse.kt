@@ -2,6 +2,7 @@ package com.example.githubuser.data.response
 
 import com.google.gson.annotations.SerializedName
 
+//data yang tidak digunakan sebaiknya dihapus
 data class GithubResponse(
 
 	@field:SerializedName("total_count")

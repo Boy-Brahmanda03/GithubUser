@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class DetailUserResponse(
 
+	//data yang tidak digunakan sebaiknya dihapus
+
 	@field:SerializedName("gists_url")
 	val gistsUrl: String? = null,
 
