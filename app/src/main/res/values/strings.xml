@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Github User</string>
+    <string name="username">Username</string>
+    <string name="menu_setting">Setting</string>
+    <string name="masukan_username_github">Masukan username github</string>
+    <string name="followers_display">Followers</string>
+    <string name="following_display">Following</string>
+    <string name="followers">%d Followers</string>
+    <string name="following">%d Following</string>
+    <string name="tab_following">Following</string>
+    <string name="tab_followers">Followers</string>
 </resources>
