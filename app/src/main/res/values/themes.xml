@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.GithubUser" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.GithubUser" parent="Theme.Material3.DayNight">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
@@ -27,12 +27,8 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_light_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
+        <item name="itemIconTint">@color/md_theme_light_onSurface</item>
     </style>
 
-    <style name="TextAppearance.Material3.ActionBar.Title.AppTitle">
-        <item name="android:textColor">@color/seed</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">35sp</item>
-    </style>
     <style name="Theme.GithubUser" parent="Base.Theme.GithubUser" />
 </resources>

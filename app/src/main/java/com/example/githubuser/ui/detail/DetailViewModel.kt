@@ -1,17 +1,21 @@
-package com.example.githubuser.ui
+package com.example.githubuser.ui.detail
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.githubuser.data.response.DetailUserResponse
-import com.example.githubuser.data.response.ItemsItem
-import com.example.githubuser.data.retrofit.ApiConfig
+import androidx.lifecycle.viewModelScope
+import com.example.githubuser.data.UserRepository
+import com.example.githubuser.data.database.FavoriteUser
+import com.example.githubuser.data.remote.response.DetailUserResponse
+import com.example.githubuser.data.remote.response.ItemsItem
+import com.example.githubuser.data.remote.retrofit.ApiConfig
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     private val _detailUser = MutableLiveData<DetailUserResponse>()
     val detailUser: LiveData<DetailUserResponse> = _detailUser
@@ -25,9 +29,18 @@ class DetailViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    companion object {
-        private const val TAG = "DetailViewModel"
+    fun saveFavoriteUser(favoriteUser: FavoriteUser){
+        viewModelScope.launch {
+            userRepository.insertFavoritedUsers(favoriteUser)
+        }
     }
+
+    fun deleteFavoriteUser(favoriteUser: FavoriteUser){
+        viewModelScope.launch {
+            userRepository.deleteFavoritedUsers(favoriteUser)
+        }
+    }
+    fun getFavoriteUser(username: String) = userRepository.getFavoritedUser(username)
 
     fun getFollowersUser(username: String) {
         _isLoading.value = true
@@ -96,6 +109,10 @@ class DetailViewModel : ViewModel() {
                 Log.e(TAG, "onFailure Get Detail: ${t.message}")
             }
         })
+    }
+
+    companion object {
+        private const val TAG = "DetailViewModel"
     }
 
 }

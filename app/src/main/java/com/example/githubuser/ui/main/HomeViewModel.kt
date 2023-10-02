@@ -1,12 +1,12 @@
-package com.example.githubuser.ui
+package com.example.githubuser.ui.main
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.githubuser.data.response.GithubResponse
-import com.example.githubuser.data.response.ItemsItem
-import com.example.githubuser.data.retrofit.ApiConfig
+import com.example.githubuser.data.remote.response.GithubResponse
+import com.example.githubuser.data.remote.response.ItemsItem
+import com.example.githubuser.data.remote.retrofit.ApiConfig
 import com.example.githubuser.utils.Event
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,11 +21,6 @@ class HomeViewModel: ViewModel() {
 
     private val _toast = MutableLiveData<Event<String>>()
     val toastText: LiveData<Event<String>> = _toast
-
-    companion object {
-        private const val TAG = "MainViewModel"
-        private var USERNAME = "Boy-Brahmanda03"
-    }
 
     init {
         searchUsers(USERNAME)
@@ -54,6 +49,11 @@ class HomeViewModel: ViewModel() {
                 Log.e(TAG, "onFailure : ${t.message}")
             }
         })
+    }
+
+    companion object {
+        private const val TAG = "MainViewModel"
+        private var USERNAME = "Boy-Brahmanda03"
     }
 
 

@@ -9,4 +9,7 @@
     <string name="following">%d Following</string>
     <string name="tab_following">Following</string>
     <string name="tab_followers">Followers</string>
+    <string name="favorite">Favorite</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="detail_user">Detail User</string>
 </resources>

@@ -15,21 +15,26 @@
         android:theme="@style/Theme.GithubUser"
         tools:targetApi="31">
         <activity
-            android:name=".ui.SplashScreenActivity"
-            android:exported="true">
+            android:name=".ui.setting.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.favorite.FavoriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.splashscreen.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/Theme.GithubUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.DetailUserActivity"
+            android:name=".ui.detail.DetailUserActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
-            android:exported="false">
-        </activity>
+            android:name=".ui.main.MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
