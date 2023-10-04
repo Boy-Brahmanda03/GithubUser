@@ -79,10 +79,11 @@ class DetailUserActivity : AppCompatActivity() {
             )
             if (isFavorited) {
                 detailViewModel.deleteFavoriteUser(favUser)
-                Toast.makeText(this, "User dihapus dari Favorit", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.remove_user_from_favorite), Toast.LENGTH_SHORT).show()
             } else {
                 detailViewModel.saveFavoriteUser(favUser)
-                Toast.makeText(this, "User ditambahkan ke Favorit", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.add_user_to_favorite), Toast.LENGTH_SHORT).show()
             }
         }
 

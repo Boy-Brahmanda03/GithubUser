@@ -47,7 +47,7 @@ class DetailViewModel(private val userRepository: UserRepository) : ViewModel() 
         val client = ApiConfig.getApiService().getUserFollowers(username)
         client.enqueue(object : Callback<List<ItemsItem>> {
             override fun onResponse(
-                call: Call<List<ItemsItem>>,
+                ignoredCall: Call<List<ItemsItem>>,
                 response: Response<List<ItemsItem>>
             ) {
                 if (response.isSuccessful) {
@@ -56,7 +56,7 @@ class DetailViewModel(private val userRepository: UserRepository) : ViewModel() 
                 }
             }
 
-            override fun onFailure(call: Call<List<ItemsItem>>, t: Throwable) {
+            override fun onFailure(ignoredCall: Call<List<ItemsItem>>, t: Throwable) {
                 _isLoading.value = false
                 Log.e(TAG, "onFailure Get Followers: ${t.message}")
             }
@@ -69,7 +69,7 @@ class DetailViewModel(private val userRepository: UserRepository) : ViewModel() 
         val client = ApiConfig.getApiService().getUserFollowing(username)
         client.enqueue(object : Callback<List<ItemsItem>> {
             override fun onResponse(
-                call: Call<List<ItemsItem>>,
+                ignoredCall: Call<List<ItemsItem>>,
                 response: Response<List<ItemsItem>>
             ) {
                 if (response.isSuccessful) {
@@ -78,7 +78,7 @@ class DetailViewModel(private val userRepository: UserRepository) : ViewModel() 
                 }
             }
 
-            override fun onFailure(call: Call<List<ItemsItem>>, t: Throwable) {
+            override fun onFailure(ignoredCall: Call<List<ItemsItem>>, t: Throwable) {
                 _isLoading.value = false
                 Log.e(TAG, "onFailure Get Following: ${t.message}")
             }

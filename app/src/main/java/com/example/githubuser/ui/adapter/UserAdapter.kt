@@ -25,7 +25,7 @@ class UserAdapter(
         }
     }
 
-    class UserViewHolder(val binding: UserItemLayoutBinding) :
+    class UserViewHolder(private val binding: UserItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(user: ItemsItem) {
             binding.tvUsername.text = user.login

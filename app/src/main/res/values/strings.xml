@@ -6,10 +6,14 @@
     <string name="followers_display">Followers</string>
     <string name="following_display">Following</string>
     <string name="followers">%d Followers</string>
-    <string name="following">%d Following</string>
+    <string name="following">%d Followings</string>
     <string name="tab_following">Following</string>
     <string name="tab_followers">Followers</string>
     <string name="favorite">Favorite</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="detail_user">Detail User</string>
+    <string name="github_logo">github_logo</string>
+    <string name="add_user_to_favorite">User ditambahkan ke Favorit</string>
+    <string name="remove_user_from_favorite">User dihapus dari Favorit</string>
+    <string name="profile_picture">profile_picture</string>
 </resources>
